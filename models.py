@@ -1,3 +1,6 @@
+from dotenv import load_dotenv
+import os
+
 from bson import json_util
 from mongoengine import (
     connect,
@@ -8,9 +11,12 @@ from mongoengine import (
     CASCADE,
 )
 
+load_dotenv()
+database_url = os.getenv('HOST_URL')
+
 connect(
     db="hw08",
-    host="mongodb+srv://milvus:Milvus@milvus.hmkzt.mongodb.net/?retryWrites=true&w=majority&appName=Milvus",
+    host=database_url,
 )
 
 
